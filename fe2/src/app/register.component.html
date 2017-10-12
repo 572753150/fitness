@@ -1,0 +1,42 @@
+<div class="container-fluid"  >
+
+  <div class="panel panel-info register-panel-control">
+    <div class="panel-heading center"><h4>Register</h4></div>
+    <form [formGroup]="form"  (ngSubmit)="onSubmit()">
+      <div class="form-group login-control">
+        <label >Email</label>
+        <input type="email" [ngClass]=" {'error':isValid('email')}" class="form-control correct-input"   formControlName="email" >
+      </div>
+      <div class="form-group login-control">
+        <label >First Name</label>
+        <input type="text"[ngClass]=" {'error':isValid('firstName')}"  class="form-control"   formControlName="firstName" required>
+      </div>
+      <div class="form-group login-control">
+        <label >Last Name</label>
+        <input type="text" [ngClass]=" {'error':isValid('lastName')}"  class="form-control"   formControlName="lastName" required>
+      </div>
+      <div class="form-group login-control">
+        <label >Password</label>
+        <input type="password"[ngClass]=" {'error':isValid('password')}"  class="form-control"   formControlName="password" required>
+      </div>
+      <div class="form-group login-control">
+        <label >Confirm Password</label>
+        <input type="password"[ngClass]=" {'error':isValid('confirmPassword')}"  class="form-control"   formControlName="confirmPassword" required>
+      </div>
+      <div *ngIf="form.errors?.mismatch" class="form-group login-control">
+      <div  class="alert alert-danger  alert-dismissible" role="alert">
+        <strong>Warning!</strong> Passwords do not match.
+      </div>
+      </div>
+      <div *ngIf="auth.exist" class="form-group login-control">
+        <div  class="alert alert-danger  alert-dismissible" role="alert">
+          <strong>Warning!</strong> Email already exists.
+        </div>
+      </div>
+      <div class="center">
+        <button type="submit"  *ngIf="form.valid" aria-disabled="true" class="btn btn-info buttonControl">Submit</button>
+        <button routerLink="/" class="btn btn-danger buttonControl">Back</button>
+      </div>
+    </form>
+  </div>
+</div>

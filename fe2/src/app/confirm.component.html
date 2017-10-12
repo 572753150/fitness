@@ -1,0 +1,26 @@
+<div class="container-fluid" >
+
+  <div class="panel panel-info login-panel-control">
+    <div class="panel-heading center"><h4>Confirm Email</h4></div>
+    <form [formGroup]="form" (ngSubmit)="login()">
+      <div class="form-group login-control">
+        <label >Email</label>
+        <input type="email" disabled  class="form-control" formControlName="email" >
+      </div>
+      <div class="form-group login-control">
+        <label >Passcode</label>
+        <input type="text" [ngClass]="{'error': isValid('passcode')}" class="form-control" formControlName="passcode" >
+      </div>
+
+      <div class="form-group login-control">
+        <div  class="alert alert-danger  alert-dismissible" role="alert">
+          <strong>Warning!</strong> Passcode does not match.
+        </div>
+      </div>
+      <div class="center">
+        <button type="submit" *ngIf="form.valid" class="btn btn-info buttonControl">Active</button>
+        <button routerLink="/" (click)="auth.logout()" class="btn btn-danger buttonControl">Back</button>
+      </div>
+    </form>
+  </div>
+</div>

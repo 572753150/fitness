@@ -1,0 +1,26 @@
+<div class="container-fluid" >
+
+  <div class="panel panel-info login-panel-control">
+    <div class="panel-heading center"><h4>Login</h4></div>
+    <form [formGroup]="form" (ngSubmit)="login()">
+      <div class="form-group login-control">
+        <label >Email</label>
+        <input type="email" [ngClass]="{'error': isValid('email')}" class="form-control" formControlName="email" >
+      </div>
+      <div class="form-group login-control">
+        <label >Password</label>
+        <input type="password" [ngClass]="{'error': isValid('password')}" class="form-control" formControlName="password" >
+      </div>
+
+      <div *ngIf="auth.loginError" class="form-group login-control">
+        <div  class="alert alert-danger  alert-dismissible" role="alert">
+          <strong>Warning!</strong> Password or Email is unmatched or inactivated.
+        </div>
+      </div>
+      <div class="center">
+        <button type="submit" *ngIf="form.valid" class="btn btn-info buttonControl">Submit</button>
+        <button routerLink="/" class="btn btn-danger buttonControl">Back</button>
+      </div>
+    </form>
+  </div>
+</div>
