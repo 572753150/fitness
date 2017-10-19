@@ -1,3 +1,0 @@
-﻿    // exports
-    window.OidcTokenManager = TokenManager;
-})();

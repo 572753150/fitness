@@ -48,14 +48,14 @@ auth.get("/confirm/:activeToken",function (req, res) {
     })
 });
 
-auth.get('/fitbit',
-    passport.authenticate('fitbit', { scope: ['activity','heartrate','location','profile'] }
-    ));
-
-auth.get( '/fitbit/callback', passport.authenticate( 'fitbit', {
-    successRedirect: '/auth/fitbit/success',
-    failureRedirect: '/auth/fitbit/failure'
-}));
+// auth.get('/fitbit',
+//     passport.authenticate('fitbit', { scope: ['activity','heartrate','location','profile'] }
+//     ));
+//
+// auth.get( '/fitbit/callback', passport.authenticate( 'fitbit', {
+//     successRedirect: '/auth/fitbit/success',
+//     failureRedirect: '/auth/fitbit/failure'
+// }));
 //--------------------------------------------router--------------------------------------------------------------------
 
 
