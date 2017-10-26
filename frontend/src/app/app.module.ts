@@ -8,6 +8,7 @@ import {AuthService} from "./auth.service";
 import {DatepickerModule} from 'ngx-date-picker';
 import {ChartModule} from "angular-highcharts";
 
+// import {MyOauthDirective} from "./oauth2.directive"
 import {AppComponent} from './app.component';
 import {IntroduceComponent} from "./introduce.component";
 import {LoginComponent} from "./login.component";
@@ -86,6 +87,7 @@ var routes = [
     MessageComponent,
     DeviceComponent,
     FriendsComponent,
+    // MyOauthDirective
   ],
 
   imports: [
@@ -101,7 +103,8 @@ var routes = [
   providers: [
     WebService,
     AuthService,
-    WindowService
+    WindowService,
+
   ],
 
   bootstrap: [

@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.0",
+    "cors": "^2.8.4",
     "cors-express": "^0.2.2",
     "express": "^4.15.4",
     "express-session": "^1.15.6",

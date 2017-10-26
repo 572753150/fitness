@@ -1,6 +1,6 @@
 import { Component,ViewChild } from '@angular/core';
 import {AuthService} from "./auth.service";
-
+import {Output} from "@angular/core/src/metadata/directives";
 @Component({
   selector: 'app-root',
   templateUrl: "./app.component.html",

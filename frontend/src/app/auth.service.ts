@@ -5,7 +5,6 @@ import {WindowService} from "./window.service";
 
 @Injectable()
 export class AuthService {
-
   BASE_URL = "http://localhost:3000/auth";
   NAME_KEY = "firstName";
   TOKEN_KEY = "token";
