@@ -19,16 +19,12 @@ export class DeviceComponent{
 
 
   bindDevice(kind: String){
-    console.log(kind);
-
-
-
-    this.window.createWindow("https://www.fitbit.com/oauth2/authorize?response_type=code&client_id=228MXT&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fverify&scope=activity%20heartrate%20location%20profile%20settings%20sleep%20social%20weight&expires_in=604800")
 
 
     switch (kind){
       case "fitbit":
-        console.log("aaaaaa")
+
+        // this.window.createWindow("https://www.fitbit.com/oauth2/authorize?response_type=code&client_id=228MXT&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fverify&scope=activity%20heartrate%20location%20profile%20settings%20sleep%20social%20weight&expires_in=604800")
         this.auth.getAuthFromFitbit();
         break;
       default:

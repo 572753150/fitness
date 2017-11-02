@@ -68,9 +68,7 @@ export class AuthService {
   }
 
   getAuthFromFitbit() {
-    // this.windowServices.createWindow("https://www.fitbit.com/oauth2/authorize", 'OAuth2 Login');
     this.http.get(this.BASE_URL + "/fitbit").subscribe(res => {
-      // this.windowServices.createWindow(res.url, 'OAuth2 Login');
       console.log(res.json());
     });
   }
