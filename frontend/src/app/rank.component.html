@@ -2,263 +2,68 @@
   <div class="container">
 
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
     <div class="btn-group pull-right" role="group" aria-label="...">
-      <button type="button" class="btn btn-info">Steps</button>
-      <button type="button" class="btn btn-danger">Calories</button>
-      <button type="button" class="btn btn-primary">Sleep</button>
+      <button type="button" class="btn btn-success" (click)="orderBy('steps')">Steps</button>
+      <button type="button" class="btn btn-primary" (click)="orderBy('distance')"> Distance</button>
+      <button type="button" class="btn btn-danger" (click)="orderBy('Calories')">Calories</button>
     </div>
-    <div class="row">
+<br>
+
+    <div id="PricingTab" style="padding-top: 0px">
+      <!--<div class="container">-->
+        <h2>Rank</h2>
+        <hr class="White-Yellow">
+
+      <div style="text-align: center"><pagination-controls  class="center" (pageChange)="p = $event"></pagination-controls></div>
+        <div class="row">
+          <table class="table table-condensed table-hover">
+            <thead>
+            <tr>
+              <th class="tabco0 ">NO</th>
+              <th class="tabco0 ">Name</th>
+              <th class="tabco2"> Steps
+              </th>
+              <th class="tabco3">Distance
+              </th>
+              <th class="tabco4">Calories
+              </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let user of users|orderBy:'steps'|paginate: { itemsPerPage: 18, currentPage: p };let i=index">
+              <td class="tabco0">{{i+1}}</td>
+              <td class="tabco0">{{user.firstName+" "+user.lastName}}</td>
+              <td class="tabco2"><i >{{user.steps}}</i></td>
+              <td class="tabco3"><i >{{user.distance}}</i></td>
+              <td class="tabco4"><i >{{user.calories}}</i></td>
+            </tr>
+
+
+            <!--<tr *ngFor="let user of KK|orderBy:'a'">-->
+              <!--<td class="tabco4"><i >{{user.a}}</i></td>-->
+            <!--</tr>-->
+
+            </tbody>
+
+
+          </table>
+        </div><!--row-->
 
 
 
-      <div class="col-md-12">
-        <table class="table" style="color: white;border: hidden">
-          <tbody>
-          <tr>
-            <td>
-              No.1
-            </td>
-            <td>
-              <img src="../assets/exapmle.jpg" class="img-circle" width="60">
-            </td>
-            <td>
-              <h4>
-                <b>Xiangyang guo</b>
-                <p>572753150@qq.com</p>
-              </h4>
-            </td>
+      <!--</div>&lt;!&ndash;container&ndash;&gt;-->
 
-            <td style="vertical-align: middle">
-                <p>1000 steps</p>
-            </td>
-            <td>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              No.2
-            </td>
-            <td>
-              <img src="../assets/exapmle.jpg" class="img-circle" width="60">
-            </td>
-            <td>
-              <h4>
-                <b>Xiangyang guo</b>
-                <p>572753150@qq.com</p>
-              </h4>
-            </td>
 
-            <td style="vertical-align: middle">
-              <p>1000 steps</p>
-            </td>
-            <td>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              No.3
-            </td>
-            <td>
-              <img src="../assets/exapmle.jpg" class="img-circle" width="60">
-            </td>
-            <td>
-              <h4>
-                <b>Xiangyang guo</b>
-                <p>572753150@qq.com</p>
-              </h4>
-            </td>
 
-            <td style="vertical-align: middle">
-              <p>1000 steps</p>
-            </td>
-            <td>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              No.4
-            </td>
-            <td>
-              <img src="../assets/exapmle.jpg" class="img-circle" width="60">
-            </td>
-            <td>
-              <h4>
-                <b>Xiangyang guo</b>
-                <p>572753150@qq.com</p>
-              </h4>
-            </td>
 
-            <td style="vertical-align: middle">
-              <p>1000 steps</p>
-            </td>
-            <td>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              No.5
-            </td>
-            <td>
-              <img src="../assets/exapmle.jpg" class="img-circle" width="60">
-            </td>
-            <td>
-              <h4>
-                <b>Xiangyang guo</b>
-                <p>572753150@qq.com</p>
-              </h4>
-            </td>
+    </div><!--PricingTab-->
 
-            <td style="vertical-align: middle">
-              <p>1000 steps</p>
-            </td>
-            <td>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              No.6
-            </td>
-            <td>
-              <img src="../assets/exapmle.jpg" class="img-circle" width="60">
-            </td>
-            <td>
-              <h4>
-                <b>Xiangyang guo</b>
-                <p>572753150@qq.com</p>
-              </h4>
-            </td>
 
-            <td style="vertical-align: middle">
-              <p>1000 steps</p>
-            </td>
-            <td>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              No.7
-            </td>
-            <td>
-              <img src="../assets/exapmle.jpg" class="img-circle" width="60">
-            </td>
-            <td>
-              <h4>
-                <b>Xiangyang guo</b>
-                <p>572753150@qq.com</p>
-              </h4>
-            </td>
 
-            <td style="vertical-align: middle">
-              <p>1000 steps</p>
-            </td>
-            <td>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              No.8
-            </td>
-            <td>
-              <img src="../assets/exapmle.jpg" class="img-circle" width="60">
-            </td>
-            <td>
-              <h4>
-                <b>Xiangyang guo</b>
-                <p>572753150@qq.com</p>
-              </h4>
-            </td>
 
-            <td style="vertical-align: middle">
-              <p>1000 steps</p>
-            </td>
-            <td>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              No.9
-            </td>
-            <td>
-              <img src="../assets/exapmle.jpg" class="img-circle" width="60">
-            </td>
-            <td>
-              <h4>
-                <b>Xiangyang guo</b>
-                <p>572753150@qq.com</p>
-              </h4>
-            </td>
 
-            <td style="vertical-align: middle">
-              <p>1000 steps</p>
-            </td>
-            <td>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              No.10
-            </td>
-            <td>
-              <img src="../assets/exapmle.jpg" class="img-circle" width="60">
-            </td>
-            <td>
-              <h4>
-                <b>Xiangyang guo</b>
-                <p>572753150@qq.com</p>
-              </h4>
-            </td>
-
-            <td style="vertical-align: middle">
-              <p>1000 steps</p>
-            </td>
-            <td>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              No.11
-            </td>
-            <td>
-              <img src="../assets/exapmle.jpg" class="img-circle" width="60">
-            </td>
-            <td>
-              <h4>
-                <b>Xiangyang guo</b>
-                <p>572753150@qq.com</p>
-              </h4>
-            </td>
-
-            <td style="vertical-align: middle">
-              <p>1000 steps</p>
-            </td>
-            <td>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              No.12
-            </td>
-            <td>
-              <img src="../assets/exapmle.jpg" class="img-circle" width="60">
-            </td>
-            <td>
-              <h4>
-                <b>Xiangyang guo</b>
-                <p>572753150@qq.com</p>
-              </h4>
-            </td>
-
-            <td style="vertical-align: middle">
-              <p>1000 steps</p>
-            </td>
-            <td>
-            </td>
-          </tr>
-
-          </tbody>
-        </table>
-      </div>
-    </div>
   </div>
 </div>
 

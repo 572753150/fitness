@@ -6,13 +6,42 @@ import {AuthService} from "./auth.service";
   templateUrl:"./friends.component.html"
 })
 export class FriendsComponent{
-  users =[{name:'aa', email:'123@qq.com'},
-    {name:'ds', email:'123@qq.com'},
-    {name:'fasdds', email:'123@qq.com'},
-    {name:'dfsfsd', email:'123@qq.com'},
-    {name:'hjvjhvhj', email:'123@qq.com'},
-    ];
-  constructor(auth: AuthService){
+  users =[
 
+    ];
+  constructor(private auth: AuthService){
+
+    this.getAllFriends();
+
+  }
+
+
+  getAllFriends(){
+    this.auth.getFriends().subscribe(res =>{
+      if(res.length&& res.length!=0){
+        res.forEach(friendId=>{
+
+          console.log(friendId);
+          this.auth.getFriend(friendId).subscribe(res=>{
+            this.users.push(res)
+          })
+        })
+      }
+    })
+  }
+
+  deleteFriend(email){
+    this.auth.deleteAFriend(email).subscribe(res=>{
+      if(res.length&& res.length!=0){
+        res.forEach(friendId=>{
+
+          console.log(friendId);
+          this.auth.getFriend(friendId).subscribe(res=>{
+            this.users.push(res)
+          })
+        })
+      }
+
+    });
   }
 }

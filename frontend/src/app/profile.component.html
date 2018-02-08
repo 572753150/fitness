@@ -1,14 +1,23 @@
 <div class="container">
   <div class="fb-profile">
     <img align="left" class="fb-image-lg" src="../assets/background.jpg" alt="Profile image example"/>
-    <img align="left" class="fb-image-profile thumbnail" src="../assets/exapmle.jpg"
+    <img align="left" class="fb-image-profile thumbnail" src="{{avatar?avatar:'../assets/exapmle.jpg'}}"
          alt="Profile image example"/>
     <div class="fb-profile-text" style="color: white">
-      <h2>Xiangyang Guo</h2>
+      <h2>{{user.firstName}}</h2>
       <table >
-        <tr> Email : 572753150@qq.com</tr>
-        <tr> Device : Fitbit</tr>
+        <tr> Email : {{user.email}}</tr>
+        <tr> Device : {{user.provider}}</tr>
+        <tr><form [formGroup]="form" class="form-inline" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <!--<input type="text" class="form-control" id="name" formControlName="name" value={{user.email}}">-->
+            <input class="form-control"  placeholder="upload your avatar" type="file" (change)="onFileChange($event)" #fileInput/>
+            <!--<button type="button" class="btn btn-sm btn-default" (click)="clearFile()">clear file</button>-->
+            <button type="submit" [disabled]="form.invalid || loading" class="btn btn-success">Submit <i class="fa fa-spinner fa-spin fa-fw" *ngIf="loading"></i></button>
+          </div>
+        </form></tr>
       </table>
     </div>
   </div>
 </div> <!-- /container -->
+

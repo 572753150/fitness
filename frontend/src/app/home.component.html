@@ -1,142 +1,132 @@
 <!--<div class="container" *ngIf="auth.isAuthenticated">-->
-<div class="container">
 
+
+<div class="container">
   <div class="row">
-    <div class="col-xs-4 col-sm-4 col-md-3" style="cursor: pointer" data-toggle="modal" data-target="#myModal" (click)="generateChart('Steps','steps/day',steps)" >
+    <div class="col-xs-4 col-sm-3 col-md-2" style="cursor: pointer" data-toggle="modal" data-target="#myModal"
+         (click)="generateChart('steps','steps/day')">
       <div class="thumbnail" style="background-color: #fffbfb">
-        <img   data-src="holder.js/60%x200" alt="60%x200"
+        <img data-src="holder.js/60%x200" alt="60%x200"
              src="../assets/baby_feet.png"
              data-holder-rendered="true" style="height: 60%; width: 60%; display: block;">
         <div class="caption">
           <h3>Steps</h3>
-          <h4><strong></strong> steps</h4>
+          <h4><strong>{{this.steps}}</strong> steps</h4>
         </div>
       </div>
     </div>
-    <div class="col-xs-4 col-sm-4 col-md-3" style="cursor: pointer" data-toggle="modal" data-target="#myModal" (click)="generateChart('Heartbeats','s/min(average)',heartbeat)">
-      <div class="thumbnail" style="background-color: #fffbfb" >
-        <img data-src="holder.js/60%x200" alt="60%x200"
-             src="../assets/heart_monitor.png"
-             data-holder-rendered="true" style="height: 60%; width: 60%; display: block;">
-        <div class="caption">
-          <h3>Heartbeats</h3>
-          <h4><strong>100</strong> s/min</h4>
-        </div>
-      </div>
-    </div>
-    <div class="col-xs-4 col-sm-4 col-md-3" style="cursor: pointer" data-toggle="modal" data-target="#myModal" (click)="generateChart('Sleep','hours/day',sleep)" >
-      <div class="thumbnail" style="background-color: #fffbfb" >
+
+    <div class="col-xs-4 col-sm-3 col-md-2" style="cursor: pointer" data-toggle="modal" data-target="#myModal"
+         (click)="generateChart('sleep','hours/day')">
+      <div class="thumbnail" style="background-color: #fffbfb">
         <img
           src="../assets/moon.png"
           data-holder-rendered="true" style="height: 60%; width: 60%; display: block;">
         <div class="caption">
           <h3>Sleep</h3>
-          <h4><strong>8.5</strong> hours</h4>
+          <h4><strong>{{this.sleep}}</strong> hours</h4>
         </div>
       </div>
     </div>
-    <div class="col-xs-4 col-sm-4 col-md-3" style="cursor: pointer" data-toggle="modal" data-target="#myModal" (click)="generateChart('Calories','cals/day',sleep)">
-      <div class="thumbnail" style="background-color: #fffbfb" >
+    <div class="col-xs-4 col-sm-3 col-md-2" style="cursor: pointer" data-toggle="modal" data-target="#myModal"
+         (click)="generateChart('calories','cals/day')">
+      <div class="thumbnail" style="background-color: #fffbfb">
         <img
           src="../assets/gas.png"
 
           data-holder-rendered="true" style="height: 60%; width: 60%; display: block;">
         <div class="caption">
           <h3>Calories</h3>
-          <h4><strong>1000</strong> cals</h4>
+          <h4><strong>{{this.calories}}</strong> cals</h4>
         </div>
       </div>
     </div>
-    <div class="col-xs-4 col-sm-4 col-md-3" style="cursor: pointer" data-toggle="modal" data-target="#myModal" (click)="generateChart('Weight','lb',weight)">
-      <div class="thumbnail" style="background-color: #fffbfb" >
-        <img data-src="holder.js/60%x200" alt="60%x200"
-             src="../assets/scales.png"
-             data-holder-rendered="true" style="height: 60%; width: 60%; display: block;">
-        <div class="caption">
-          <h3>Weight</h3>
-          <h4><strong>160</strong> pounds</h4>
-        </div>
-      </div>
-    </div>
-    <div class="col-xs-4 col-sm-4 col-md-3" style="cursor: pointer" data-toggle="modal" data-target="#myModal" (click)="generateChart('Distance','miles',diatance)">
+    <div class="col-xs-4 col-sm-3 col-md-2" style="cursor: pointer" data-toggle="modal" data-target="#myModal"
+         (click)="generateChart('distance','miles')">
       <div class="thumbnail" style="background-color: #fffbfb">
         <img data-src="holder.js/60%x200" alt="60%x200"
              src="../assets/area_chart.png"
-             data-holder-rendered="true" style="height: 60%; width: 60%; display: block;" >
-        <div class="caption">
-          <h3>Distance</h3>
-          <h4><strong>10</strong> miles</h4>
-        </div>
-      </div>
-    </div>
-    <div class="col-xs-4 col-sm-4 col-md-3" style="cursor: pointer" data-toggle="modal" data-target="#myModal" (click)="generateChart('Distance','miles',height)">
-      <div class="thumbnail" style="background-color: #fffbfb" >
-        <img data-src="holder.js/60%x200" alt="60%x200"
-             src="../assets/h.png"
              data-holder-rendered="true" style="height: 60%; width: 60%; display: block;">
         <div class="caption">
-          <h3>Height</h3>
-          <h4><strong>180</strong> cm</h4>
+          <h3>Distance</h3>
+          <h4><strong>{{this.distance}}</strong> miles</h4>
         </div>
+      </div>
+    </div>
+
+
+    <div class="col-xs-4 col-sm-3 col-md-2" style="cursor: pointer;" data-toggle="modal" data-target="#myModal"
+         (click)="generateChart('heart','s/min(average)')">
+      <div class="thumbnail" style="background-color: #fffbfb">
+        <img data-src="holder.js/60%x200" alt="60%x200"
+             src="../assets/heart_monitor.png"
+             data-holder-rendered="true" style="height: 60%; width: 60%; display: block;">
+        <div class="caption">
+          <h3>Heartbeats</h3>
+          <h4><strong>{{this.heartbeats}}</strong> s/min</h4>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-10">
+      <div [(chart)]="weightChart">
+
+      </div>
+    </div>
+
+
+  </div>
+
+
+  <!--//-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;Modal-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            <span class="sr-only">Close</span>
+          </button>
+          <h4 class="modal-title" id="myModalLabel">{{decoraterOfChart.type}}</h4>
+        </div>
+        <div class="modal-footer text-center">
+          <div class="form-inline text-center" style="margin: auto">
+
+
+            <div class="form-group" style="margin-right: 10px">
+              <label>Start: </label>
+              <input class="form-control" [(ngModel)]="start" type="date"
+                     (change)="generateChart(decoraterOfChart.type,decoraterOfChart.unite)">
+            </div>
+
+            <div class="form-group">
+              <label>End: </label>
+              <input class="form-control" [(ngModel)]="end" type="date"
+                     (change)="generateChart(decoraterOfChart.type,decoraterOfChart.unite)">
+            </div>
+
+          </div>
+
+        </div>
+        <div class="modal-body">
+
+          <div [(chart)]="chart">
+
+          </div>
+
+        </div>
+
       </div>
     </div>
   </div>
 
 
-
-
-
-
-</div>
-
-
-//-----------------------Modal-----------------------------------------------------------------------------------------
-
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-          <span class="sr-only">Close</span>
-        </button>
-        <h4 class="modal-title" id="myModalLabel">Graph</h4>
-      </div>
-      <div class="modal-footer text-center" >
-        <div class="form-inline text-center" style="margin: auto">
-
-
-          <div class="form-group" style="margin-right: 10px">
-          <label  >Start: </label>
-            <input class="form-control" [(ngModel)]="start" type="date" (change)="generateChart(decoraterOfChart.type,decoraterOfChart.unite,heartbeat)">
-          </div>
-
-          <div class="form-group">
-            <label  >End: </label>
-            <input class="form-control" [(ngModel)]="end" type="date"(change)="generateChart(decoraterOfChart.type,decoraterOfChart.unite,heartbeat)">
-          </div>
-          <!--<div class="form-group">-->
-            <!--<label  >Start</label>-->
-            <!--<ngx-datepicker [(ngModel)]="start" style="display: inline"></ngx-datepicker>-->
-          <!--</div>-->
-          <!--<div class="form-group">-->
-            <!--<label >End</label>-->
-            <!--<ngx-datepicker [(ngModel)]="end" style="display: inline"></ngx-datepicker>-->
-
-          <!--</div>-->
-        </div>
-
-      </div>
-      <div class="modal-body">
-
-        <div [(chart)]="chart">
-
-        </div>
-
-      </div>
-
-    </div>
-  </div>
 </div>
 
 

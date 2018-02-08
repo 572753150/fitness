@@ -7,16 +7,16 @@ import {AuthService} from "./auth.service";
 
 @Injectable()
 export class WebService{
-  BASE_URL= "https://localhost:3000/api";
-  healthInfo={};
+  BASE_URL= "https://localhost:3000/auth/user";
+  defaultdata={};
 
   constructor(private  http : Http,private auth :AuthService ){
-    this.getHealthInfo();
+    this.getDefaultData();
   }
-  async getHealthInfo(){
+  async getDefaultData(){
     try {
-      var response = await this.http.get(this.BASE_URL+"/healthInfo").toPromise();
-      this.healthInfo = response.json();
+      var response = await this.http.get(this.BASE_URL+"/data").toPromise();
+      this.defaultdata = response.json();
     }catch (error){
       this.handleError(error);
     }
@@ -25,8 +25,8 @@ export class WebService{
   async postTest(healthInfo){
 
     try {
-      var response =  await this.http.post(this.BASE_URL+"/healthInfo",healthInfo).toPromise();
-      this.healthInfo = response.json();
+      var response =  await this.http.post(this.BASE_URL+"/defaultdata",healthInfo).toPromise();
+      this.defaultdata = response.json();
     }catch (error){
       this.handleError(error);
     }

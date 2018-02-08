@@ -1,7 +1,5 @@
 import {Component} from "@angular/core";
 import {AuthService} from "./auth.service";
-import {window} from "rxjs/operator/window";
-import { DOCUMENT } from '@angular/platform-browser';
 import {WindowService} from "./window.service";
 
 @Component({
@@ -20,13 +18,13 @@ export class DeviceComponent{
 
   bindDevice(kind: String){
 
-
     switch (kind){
       case "fitbit":
-
-        // this.window.createWindow("https://www.fitbit.com/oauth2/authorize?response_type=code&client_id=228MXT&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fverify&scope=activity%20heartrate%20location%20profile%20settings%20sleep%20social%20weight&expires_in=604800")
-        this.auth.getAuthFromFitbit();
+        this.window.createWindow("http://localhost:3000/auth/fitbit" );
         break;
+
+      case "jawbone":
+        this.window.createWindow("http://localhost:3000/auth/jawbone" );
       default:
 
         break;

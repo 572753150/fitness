@@ -6,7 +6,23 @@ import {AuthService} from "./auth.service";
   templateUrl:"./message.component.html"
 })
 export class MessageComponent{
-  constructor(auth: AuthService){
-
+  messages=[];
+  constructor(private auth: AuthService){
+      this.auth.getMessage().subscribe(res=>{
+        this.messages = res;
+      })
   }
+
+
+  deleteMessage(uid){
+    this.auth.deleteMessage(uid);
+  }
+
+
+  addFriend(email,uid){
+    this.auth.addAFriend(email);
+    this.deleteMessage(uid)
+  }
+
+
 }

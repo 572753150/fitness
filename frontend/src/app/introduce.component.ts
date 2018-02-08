@@ -10,7 +10,7 @@ export class IntroduceComponent {
   // @ViewChild(HealthInfoComponent) healthInfo:HealthInfoComponent;
   //
   // onPosted(healthInfo){
-  //   this.healthInfo.healthInfo= healthInfo;
+  //   this.defaultdata.defaultdata= defaultdata;
   // }
 
 

@@ -7,8 +7,11 @@ import {RouterModule} from "@angular/router";
 import {AuthService} from "./auth.service";
 import {DatepickerModule} from 'ngx-date-picker';
 import {ChartModule} from "angular-highcharts";
+import {NgxPaginationModule} from "ngx-pagination";
+import {OrderBy} from "./order-by";
+import { Ng2OrderModule } from 'ng2-order-pipe';
+import { FileUploadModule } from 'ng2-file-upload';
 
-// import {MyOauthDirective} from "./oauth2.directive"
 import {AppComponent} from './app.component';
 import {IntroduceComponent} from "./introduce.component";
 import {LoginComponent} from "./login.component";
@@ -23,6 +26,8 @@ import {MessageComponent} from "./message.component";
 import {DeviceComponent} from "./device.component";
 import {FriendsComponent} from "./friends.component";
 import {WindowService} from "./window.service";
+import {HomeService} from "./home.service";
+
 
 var routes = [
   {
@@ -87,7 +92,8 @@ var routes = [
     MessageComponent,
     DeviceComponent,
     FriendsComponent,
-    // MyOauthDirective
+    OrderBy,
+
   ],
 
   imports: [
@@ -98,13 +104,16 @@ var routes = [
     RouterModule.forRoot(routes),
     DatepickerModule,
     ChartModule,
+    NgxPaginationModule,
+    Ng2OrderModule,
+    FileUploadModule,
   ],
 
   providers: [
     WebService,
     AuthService,
     WindowService,
-
+    HomeService,
   ],
 
   bootstrap: [

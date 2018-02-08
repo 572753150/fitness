@@ -3,10 +3,10 @@
 // // import {Chart} from "angular-highcharts";
 //
 // @Component({
-//   selector: "healthInfo",
-//   // template: "<div *ngFor='let healthInfo of healthInfos' >Weight : {{healthInfo.weight}} Height: {{healthInfo.height}}" +
-//   // "distance :{{healthInfo.distance}} </div><div class='btn btn-danger btn-lg'>Button</div> "
-//   templateUrl: './healthInfo.component.html'
+//   selector: "defaultdata",
+//   // template: "<div *ngFor='let defaultdata of healthInfos' >Weight : {{defaultdata.weight}} Height: {{defaultdata.height}}" +
+//   // "distance :{{defaultdata.distance}} </div><div class='btn btn-danger btn-lg'>Button</div> "
+//   templateUrl: './defaultdata.component.html'
 //
 // })
 //
@@ -29,7 +29,7 @@
 //   //     data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
 //   //   }]
 //   // });
-//   // healthInfo={};
+//   // defaultdata={};
 //   name: string;
 //   address: any;
 //   showSkills :boolean;
@@ -56,11 +56,11 @@
 //     console.log(this.aaa)
 //   }
 //   // submit(){
-//   //   console.log(healthInfo)
+//   //   console.log(defaultdata)
 //   // }
 //   // async ngOnInit(){
-//   //   // var response=await this.webService.getHealthInfo();
-//   //   // this.healthInfo=response.json();
+//   //   // var response=await this.webService.getDefaultData();
+//   //   // this.defaultdata=response.json();
 //   //   // this.webService.getUser().subscribe();
 //   //
 //   //

@@ -91,7 +91,6 @@ function createUser(email, newUser, cb) {
 
 
 
-
 module.exports.createUser = createUser;
 
 function findSpecificUser(flag, filter, cb) {

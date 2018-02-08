@@ -14,13 +14,20 @@
     "cors": "^2.8.4",
     "cors-express": "^0.2.2",
     "express": "^4.15.4",
+    "express-flash": "0.0.2",
     "express-session": "^1.15.6",
     "fitbit-oauth2": "0.0.1",
+    "fs": "0.0.1-security",
     "jsonwebtoken": "^8.0.1",
     "livereload": "^0.6.3",
     "mongoose": "^4.11.12",
     "nodemailer": "^4.1.0",
     "passport": "^0.4.0",
-    "passport-fitbit-oauth2": "^1.0.2"
+    "passport-fitbit-oauth2": "^1.0.2",
+    "passport-jawbone": "^1.0.3",
+    "passport-local": "^1.0.0",
+    "raw-body": "^2.3.2",
+    "socket.io": "^2.0.4",
+    "content-type": "latest"
   }
 }
