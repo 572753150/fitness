@@ -10,6 +10,7 @@ var JawboneStrategy = require('passport-jawbone').Strategy;
 var fs = require("fs");
 var request = require('request');
 var requests = require('./requests');
+var passwordHash = require('password-hash');
 
 //---------------------------------oauth2 part-------------------------------------------------------------------------
 const FitBitCLIENT_ID = '228MXT';
@@ -53,7 +54,6 @@ passport.use(new FitbitStrategy({
             } else {
                 done(null, user);
             }
-
         })
     }
 ));
@@ -153,7 +153,7 @@ passport.use(new LocalStrategy({
             }
             if (!user) {
                 return done(null, false, {message: 'No such user'});
-            } else if (user.password == password && user.active) {
+            } else if (passwordHash.verify(password, user.password ) && user.active) {
                 return done(null, user);
             } else {
                 return done(null, false, {message: 'Some wrong Info'});
@@ -167,7 +167,7 @@ passport.use(new LocalStrategy({
 //--------------------------------------------router--------------------------------------------------------------------
 auth.post("/register", (req, res) => {
     var user = req.body;
-    // console.log(user);
+    user.password = passwordHash.generate(user.password );
     users.createUser(user.email, user, function (err, result) {
 
         if (result.msg) {
@@ -197,10 +197,10 @@ auth.post('/user/avatar', isAuthenticated, function (req, res) {// update avatar
 
     console.log(req.body.avatar.value);
 
-    users.updateAvatar(req.user.email,req.body.avatar,function (err, result) {
-        if(err){
+    users.updateAvatar(req.user.email, req.body.avatar, function (err, result) {
+        if (err) {
             throw err;
-        }else{
+        } else {
             res.json(result.avatar);
         }
     })
@@ -210,12 +210,11 @@ auth.post('/user/avatar', isAuthenticated, function (req, res) {// update avatar
 auth.get('/user/avatar', isAuthenticated, function (req, res) {// update avatar
 
 
-
-    users.findByEmail(req.user.email,function (err, result) {
-        if(err){
+    users.findByEmail(req.user.email, function (err, result) {
+        if (err) {
             throw err;
-        }else{
-            res.json(result.avatar?result.avatar:{});
+        } else {
+            res.json(result.avatar ? result.avatar : {});
         }
     })
 
@@ -250,8 +249,11 @@ auth.get("/user/device/fitbit/data", isAuthenticated, function (req, res) {
             if (!error && response.statusCode == 200) {
 
                 var data = JSON.parse(body);
+
+
                 var dailyReport = {"steps": 0, "distance": 0, "calories": 0};
                 if (data && data.summary) {
+                    console.log(data.summary);
                     if (data.summary.steps) {
                         dailyReport.steps = data.summary.steps;
                     }
@@ -294,6 +296,7 @@ auth.get("/user/device/jawbone/data/:kind", isAuthenticated, function (req, res)
             if (!error && response.statusCode == 200) {
 
                 var data = JSON.parse(body).data.items;
+                console.log(data);
                 var dailyReport = {"steps": 0, "distance": 0, "calories": 0};
                 if (data && data[0] && data[0].details && req.params.kind === "moves") {
                     if (data[0].details.steps) {
@@ -458,7 +461,7 @@ auth.get("/friends/:friendId", function (req, res) {// get all friends
                 "steps": user.dailyReport.steps,
                 "distance": user.dailyReport.distance,
                 "calories": user.dailyReport.calories,
-                "avatar": "data:"+user.avatar.filetype+";base64,"+user.avatar.value,
+                "avatar": "data:" + user.avatar.filetype + ";base64," + user.avatar.value,
             });
         }
     })

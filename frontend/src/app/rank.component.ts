@@ -17,7 +17,6 @@ export class RankComponent{
 
 
   constructor(private  auth :AuthService){
-
     auth.getFriends().subscribe(res =>{
       res.push(auth.email);
       if(res.length&& res.length!=0){

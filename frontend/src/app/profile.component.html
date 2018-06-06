@@ -10,9 +10,7 @@
         <tr> Device : {{user.provider}}</tr>
         <tr><form [formGroup]="form" class="form-inline" (ngSubmit)="onSubmit()">
           <div class="form-group">
-            <!--<input type="text" class="form-control" id="name" formControlName="name" value={{user.email}}">-->
             <input class="form-control"  placeholder="upload your avatar" type="file" (change)="onFileChange($event)" #fileInput/>
-            <!--<button type="button" class="btn btn-sm btn-default" (click)="clearFile()">clear file</button>-->
             <button type="submit" [disabled]="form.invalid || loading" class="btn btn-success">Submit <i class="fa fa-spinner fa-spin fa-fw" *ngIf="loading"></i></button>
           </div>
         </form></tr>

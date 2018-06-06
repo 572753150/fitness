@@ -7,12 +7,4 @@ import { Component } from '@angular/core';
 export class IntroduceComponent {
 
 
-  // @ViewChild(HealthInfoComponent) healthInfo:HealthInfoComponent;
-  //
-  // onPosted(healthInfo){
-  //   this.defaultdata.defaultdata= defaultdata;
-  // }
-
-
-
 }

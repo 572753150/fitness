@@ -23,7 +23,6 @@ export class WebService{
   }
 
   async postTest(healthInfo){
-
     try {
       var response =  await this.http.post(this.BASE_URL+"/defaultdata",healthInfo).toPromise();
       this.defaultdata = response.json();

@@ -20,9 +20,13 @@ var userSchema = mongoose.Schema({
     },
     friends :[],
     avatar:{},
-
-
 });
+
+
+
+
+
+
 
 userSchema.set('toJSON', {
     transform: function (doc, result) {

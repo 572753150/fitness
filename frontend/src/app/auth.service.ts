@@ -57,9 +57,9 @@ export class AuthService {
         this.exist = true;
         return;
       }
-      localStorage.setItem(this.TOKEN_KEY, authResponse.token);
-      localStorage.setItem(this.NAME_KEY, authResponse.firstName);
-      localStorage.setItem(this.EMAIL_KEY, authResponse.email);//  yuan xian bushi   shi user.email
+      // localStorage.setItem(this.TOKEN_KEY, authResponse.token);
+      // localStorage.setItem(this.NAME_KEY, authResponse.firstName);
+      // localStorage.setItem(this.EMAIL_KEY, authResponse.email);//  yuan xian bushi   shi user.email
       alert("Confirm your email address by click the link!")
       this.router.navigate(['/'])
     });
@@ -72,6 +72,10 @@ export class AuthService {
     }
     // alert("chu fa")
     return this.http.post(this.BASE_URL + "/request/email/" + email, {}, {withCredentials: true}).subscribe(res => res.json())
+  }
+
+  updateDeviceInfo(device){
+    localStorage.setItem(this.PROVIDER_KEY, device);
   }
 
   login(user) {

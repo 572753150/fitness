@@ -17,16 +17,15 @@ export class DeviceComponent{
 
 
   bindDevice(kind: String){
-
     switch (kind){
       case "fitbit":
         this.window.createWindow("http://localhost:3000/auth/fitbit" );
+        this.auth.updateDeviceInfo("fitbit");
         break;
-
       case "jawbone":
         this.window.createWindow("http://localhost:3000/auth/jawbone" );
+        this.auth.updateDeviceInfo("jawbone");
       default:
-
         break;
     }
   }

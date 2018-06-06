@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.0",
+    "content-type": "latest",
     "cookie-parser": "^1.4.3",
     "cors": "^2.8.4",
     "cors-express": "^0.2.2",
@@ -26,8 +27,8 @@
     "passport-fitbit-oauth2": "^1.0.2",
     "passport-jawbone": "^1.0.3",
     "passport-local": "^1.0.0",
+    "password-hash": "^1.2.2",
     "raw-body": "^2.3.2",
-    "socket.io": "^2.0.4",
-    "content-type": "latest"
+    "socket.io": "^2.0.4"
   }
 }

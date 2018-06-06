@@ -73,7 +73,8 @@ var routes = [
   {
     path: 'friend',
     component: FriendsComponent,
-  }
+  },
+
 
 ];
 

@@ -2,7 +2,6 @@ import {Component, OnInit} from "@angular/core";
 import {AuthService} from "./auth.service";
 import {Chart} from "angular-highcharts";
 import {HomeService} from "./home.service";
-import * as io from 'socket.io-client';
 
 @Component({
 
@@ -12,7 +11,7 @@ import * as io from 'socket.io-client';
 })
 
 
-export class HomeComponent{
+export class HomeComponent {
 
   provider;
   data;
@@ -34,13 +33,9 @@ export class HomeComponent{
   calories: String;
 
 
-  socket;
 
   constructor(private auth: AuthService) {
     this.provider = this.auth.provider;
-    // this.socket= io('http://localhost:3000');
-
-
 
     var now = new Date();
     var before = new Date(now.getTime() - 1000 * 60 * 60 * 24 * 6);// at least 7 days
@@ -110,14 +105,14 @@ export class HomeComponent{
 
       })
 
-      var transferStart = new Date(this.weightStart.replace(/-/g,'/')).valueOf()/1000;
-      var transferEnd =transferStart +  60 * 60 * 24 *32;
-      this.auth.getJawboneFixedRangeOfData(transferStart+"",transferEnd+"",'body_events').subscribe(res=>{
+      var transferStart = new Date(this.weightStart.replace(/-/g, '/')).valueOf() / 1000;
+      var transferEnd = transferStart + 60 * 60 * 24 * 32;
+      this.auth.getJawboneFixedRangeOfData(transferStart + "", transferEnd + "", 'body_events').subscribe(res => {
         console.log(res);
-        var  arr=[];
-        res.forEach(item=>{
+        var arr = [];
+        res.forEach(item => {
           var str = this.transferJawboneDateString(item);
-          arr.push([new Date(str).valueOf(),item.weight])
+          arr.push([new Date(str).valueOf(), item.weight])
         })
 
 
@@ -189,7 +184,7 @@ export class HomeComponent{
     })
   }
 
-  formateWeightChart(arr){
+  formateWeightChart(arr) {
     this.weightChart = new Chart({
       chart: {
         style: {
@@ -256,58 +251,49 @@ export class HomeComponent{
 
 
   generateChart(type: string, unite: string) {
-
-
     if (this.provider === 'jawbone') {
       var temp;
-      if (type === 'steps' || 'calories' || 'distance') {
-         temp= "moves"
+      if (type === 'steps' ||type === 'calories' ||type === 'distance') {
+        temp = "moves"
       }
-      if(type==='sleep'){
-        temp ='sleeps';
+      if (type === 'sleep') {
+        temp = 'sleeps';
       }
       var transferStart = this.start;
       var transferEnd = this.end;
       transferStart = new Date(transferStart.replace(/-/g, '/')).getTime() / 1000;
       transferEnd = (new Date(transferEnd.replace(/-/g, '/')).getTime() + 1000 * 60 * 60 * 24  ) / 1000;
       this.auth.getJawboneFixedRangeOfData(transferStart, transferEnd, temp).subscribe(res => {
-
         console.log(res);
         var arr = [];
         switch (type) {
           case 'steps':
             res.forEach(item => {
               var str = this.transferJawboneDateString(item);
-              arr.push([new Date(str).valueOf(),item.details.steps]);
+              arr.push([new Date(str).valueOf(), item.details.steps]);
             })
             break;
           case 'calories':
-              res.forEach(item => {
-                var str = this.transferJawboneDateString(item);
-                arr.push([new Date(str).valueOf(),parseInt(item.details.wo_calories+item.details.bg_calories+item.details.bmr_day)]);
-              })
-
+            res.forEach(item => {
+              var str = this.transferJawboneDateString(item);
+              arr.push([new Date(str).valueOf(), parseInt(item.details.wo_calories + item.details.bg_calories + item.details.bmr_day)]);
+            })
             break;
           case 'distance':
-              res.forEach(item => {
-                var str = this.transferJawboneDateString(item);
-                arr.push([new Date(str).valueOf(),parseFloat(item.details.km.toFixed(1))]);
-              })
-
+            res.forEach(item => {
+              var str = this.transferJawboneDateString(item);
+              arr.push([new Date(str).valueOf(), parseFloat(item.details.km.toFixed(1))]);
+            })
             break;
           case 'sleep':
             res.forEach(item => {
               var str = this.transferJawboneDateString(item);
-              arr.push([new Date(str).valueOf(),parseFloat((item.details.duration/3600).toFixed(1))]);
+              arr.push([new Date(str).valueOf(), parseFloat((item.details.duration / 3600).toFixed(1))]);
             })
-
             break;
-
         }
         this.data = arr;
-
-        console.log(arr);
-        this.formatChar(unite,type,arr);
+        this.formatChar(unite, type, arr);
       });
     } else if (this.provider === 'fitbit') {
       this.auth.getFitbitFixedRangeOfData(this.start, this.end, type).subscribe(res => {
@@ -317,29 +303,22 @@ export class HomeComponent{
         } else {
           this.data = this.transferResDataDateFormate(res, type);
         }
-
-        console.log(this.data);
-      this.formatChar(unite,type,this.data);
-
+        this.formatChar(unite, type, this.data);
       });
     }
-
-
-
-
   }
 
 
-  transferJawboneDateString(item){
-    var dateArr = (item.date+'').split('');
-    var str='';
-    for(var i =0; i<dateArr.length;i++){
-      str+= dateArr[i];
-      if(i==3){
-        str+='-';
+  transferJawboneDateString(item) {
+    var dateArr = (item.date + '').split('');
+    var str = '';
+    for (var i = 0; i < dateArr.length; i++) {
+      str += dateArr[i];
+      if (i == 3) {
+        str += '-';
       }
-      if(i==5){
-        str+='-';
+      if (i == 5) {
+        str += '-';
       }
 
     }
@@ -347,8 +326,7 @@ export class HomeComponent{
   }
 
 
-  formatChar(unite,type,data){
-
+  formatChar(unite, type, data) {
     this.decoraterOfChart.unite = unite;
     this.decoraterOfChart.type = type;
     this.chart = new Chart({
@@ -361,13 +339,12 @@ export class HomeComponent{
         },
         type: 'column',
       },
-
       title: {
         text: ""
       },
       xAxis: {
         type: 'datetime',
-        dateTimeLabelFormats: { // don't display the dummy year
+        dateTimeLabelFormats: {
           day: '%e/%b',
           month: '%b %y',
           year: '%Y'
@@ -385,16 +362,13 @@ export class HomeComponent{
             return this.value;
           },
         },
-
       },
       series: [
         {
           name: type,
           data: data
         },
-
       ],
-
       plotOptions: {
         series: {
           dataLabels: {
@@ -403,15 +377,12 @@ export class HomeComponent{
           }
         }
       },
-
-
       credits: {
         enabled: false
       },
       legend: {
         enabled: false
       },
-
     });
   }
 }

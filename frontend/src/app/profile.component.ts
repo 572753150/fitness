@@ -46,33 +46,29 @@ export class ProfileComponent {
     let reader = new FileReader();
     if(event.target.files && event.target.files.length > 0) {
       let file = event.target.files[0];
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        this.form.get('avatar').setValue({
-          filename: file.name,
-          filetype: file.type,
-          value: reader.result.split(',')[1]
-        })
-      };
+      console.log(file.size);
+      if(file.size >10240000){
+        alert("The picture size is too big");
+      }else{
+        reader.readAsDataURL(file);
+        reader.onload = () => {
+          this.form.get('avatar').setValue({
+            filename: file.name,
+            filetype: file.type,
+            value: reader.result.split(',')[1]
+          })
+        };
+      }
     }
   }
-
 
   onSubmit() {
     const formModel = this.form.value;
     this.loading = true;
-    // this.http.post('apiUrl', formModel)
-    console.log(formModel);
-
     this.auth.updateAvater(formModel).subscribe(res=>{
-
-
-
       this.avatar = "data:"+res.filetype+";base64,"+res.value;
       this.loading = false;
     })
-
-
   }
 
 

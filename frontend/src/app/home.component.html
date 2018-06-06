@@ -1,20 +1,19 @@
-<!--<div class="container" *ngIf="auth.isAuthenticated">-->
 
 
 <div class="container">
   <div class="row">
     <div class="col-xs-4 col-sm-3 col-md-2" style="cursor: pointer" data-toggle="modal" data-target="#myModal"
-         (click)="generateChart('steps','steps/day')">
-      <div class="thumbnail" style="background-color: #fffbfb">
-        <img data-src="holder.js/60%x200" alt="60%x200"
-             src="../assets/baby_feet.png"
-             data-holder-rendered="true" style="height: 60%; width: 60%; display: block;">
-        <div class="caption">
-          <h3>Steps</h3>
-          <h4><strong>{{this.steps}}</strong> steps</h4>
-        </div>
+               (click)="generateChart('steps','steps/day')">
+    <div class="thumbnail" style="background-color: #fffbfb">
+      <img data-src="holder.js/60%x200" alt="60%x200"
+           src="../assets/baby_feet.png"
+           data-holder-rendered="true" style="height: 60%; width: 60%; display: block;">
+      <div class="caption">
+        <h3>Steps</h3>
+        <h4><strong>{{this.steps}}</strong> steps</h4>
       </div>
     </div>
+  </div>
 
     <div class="col-xs-4 col-sm-3 col-md-2" style="cursor: pointer" data-toggle="modal" data-target="#myModal"
          (click)="generateChart('sleep','hours/day')">
@@ -81,9 +80,6 @@
 
 
   </div>
-
-
-  <!--//-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;Modal-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
 
   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">

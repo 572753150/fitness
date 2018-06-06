@@ -170,7 +170,7 @@ function createUser(email, newUser, cb) {
                     dailyReport:{
                         steps: 0,
                         calories:0,
-                        sleep:0,
+                        distance:0,
                     },
                     provider:"None",
                     avatar:{

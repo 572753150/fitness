@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
     <div class="btn-group pull-right" role="group" aria-label="...">
+      <button type="button" class="btn" (click)="orderBy('steps')">Sort By:</button>
       <button type="button" class="btn btn-success" (click)="orderBy('steps')">Steps</button>
       <button type="button" class="btn btn-primary" (click)="orderBy('distance')"> Distance</button>
       <button type="button" class="btn btn-danger" (click)="orderBy('Calories')">Calories</button>
@@ -12,7 +13,6 @@
 <br>
 
     <div id="PricingTab" style="padding-top: 0px">
-      <!--<div class="container">-->
         <h2>Rank</h2>
         <hr class="White-Yellow">
 
@@ -39,26 +39,10 @@
               <td class="tabco3"><i >{{user.distance}}</i></td>
               <td class="tabco4"><i >{{user.calories}}</i></td>
             </tr>
-
-
-            <!--<tr *ngFor="let user of KK|orderBy:'a'">-->
-              <!--<td class="tabco4"><i >{{user.a}}</i></td>-->
-            <!--</tr>-->
-
             </tbody>
-
-
           </table>
-        </div><!--row-->
-
-
-
-      <!--</div>&lt;!&ndash;container&ndash;&gt;-->
-
-
-
-
-    </div><!--PricingTab-->
+        </div>
+    </div>
 
 
 
